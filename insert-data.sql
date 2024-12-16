@@ -90,3 +90,11 @@ INSERT INTO Evaluation VALUES (13, 118, 11);
 INSERT INTO Evaluation VALUES (13, 119, 8);
 INSERT INTO Evaluation VALUES (13, 120, 14);
 INSERT INTO Evaluation VALUES (13, 121, 12);
+
+INSERT INTO Moyennes (idm, groupe, moyenne)
+SELECT e.idm, et.groupe, ROUND(AVG(e.note)::NUMERIC, 2) AS moyenne
+FROM Evaluation e
+JOIN Etudiant et ON e.ide = et.ide
+GROUP BY e.idm, et.groupe;
+
+SELECT * FROM Moyennes;

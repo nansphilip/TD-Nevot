@@ -1,3 +1,9 @@
+# SQL TD LEVEL "NOOB"
+
+[TD1-1](https://mickael-martin-nevot.com/institut-g4/sql/?:s40-td1-1-schema-relationnel.pdf)
+[TD1-1 SQL File](https://mickael-martin-nevot.com/institut-g4/sql/s40-td1-1-schema-relationnel-extension.sql)
+[TD1-2](https://mickael-martin-nevot.com/institut-g4/sql/?:s40-td1-2-integrite-et-langage-de-definition-de-donnees-ldd.pdf)
+
 Create a postgres container:
 ```bash
 docker run --name td-sql-nevot \
@@ -31,8 +37,11 @@ docker run -d --name adminer -p 8080:8080 adminer
 Access the adminer in the browser:
 
 ```url
-http://localhost:8080/?pgsql=host.docker.internal%3A5433&username=postgres&db=zenetude-bd
+http://localhost:8080/?pgsql=host.docker.internal%3A5433&username=postgres&db=zenetude-bd&ns=public&select=moyennes
 ```
+
+Expected result:
+![Adminer](./result.png)
 
 Stop and remove the containers:
 ```bash

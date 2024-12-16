@@ -46,15 +46,19 @@ CREATE TABLE Cours (
 CREATE TABLE Evaluation (
     idm INTEGER,
     ide INTEGER,
-    note NUMERIC,
+    note INTEGER,
     CONSTRAINT pk_evaluation PRIMARY KEY (idm, ide),
     FOREIGN KEY (idm) REFERENCES Matiere (idm),
     FOREIGN KEY (ide) REFERENCES Etudiant (ide)
 );
 
-CREATE TABLE Moyenne (
-    ide INTEGER,
+CREATE TABLE Moyennes (
+    idm INTEGER,
+    groupe CHAR(2),
     moyenne NUMERIC,
-    CONSTRAINT pk_moyenne PRIMARY KEY (ide),
-    FOREIGN KEY (ide) REFERENCES Etudiant (ide)
+    CONSTRAINT pk_moyennes PRIMARY KEY (idm, groupe),
+    FOREIGN KEY (idm) REFERENCES Matiere (idm),
+    CONSTRAINT groupe_check_moyennes CHECK (groupe IN ('G1', 'G2', 'G3'))
 );
+
+\dt
